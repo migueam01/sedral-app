@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/padding_left_list"
+    android:paddingTop="@dimen/padding_top_list"
+    android:paddingRight="@dimen/padding_left_list"
+    android:paddingBottom="@dimen/padding_top_list">
+
+    <TextView
+        android:id="@+id/txtOrientacion"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_width="@dimen/img_width_list_tub"
+        android:layout_height="@dimen/img_width_list_tub"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/circle_shape"
+        android:gravity="center"
+        android:text="@string/label_texto_circulo"
+        android:textColor="#0D0D0D"
+        android:textSize="@dimen/text_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPozoFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/txtOrientacion"
+        android:textAppearance="?attr/textAppearanceListItem"
+        app:layout_constraintStart_toEndOf="@+id/txtOrientacion"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Conecta: PP" />
+
+    <TextView
+        android:id="@+id/txtFlujo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPozoFin"
+        android:layout_alignStart="@+id/txtPozoFin"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/txtPozoFin"
+        app:layout_constraintTop_toBottomOf="@+id/txtPozoFin"
+        tools:text="Flujo: Sale" />
+
+    <TextView
+        android:id="@+id/txtMaterialDiametro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFlujo"
+        android:layout_alignStart="@+id/txtPozoFin"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/txtFlujo"
+        app:layout_constraintTop_toBottomOf="@+id/txtFlujo"
+        tools:text="PVC; Ø=200mm" />
+
+    <ImageView
+        android:id="@+id/imgBtnEliminarTuberia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txtFlujo"
+        android:contentDescription="@string/content_img_eliminar_pozo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@+id/txtFlujo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.481"
+        app:srcCompat="@drawable/ic_delete_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

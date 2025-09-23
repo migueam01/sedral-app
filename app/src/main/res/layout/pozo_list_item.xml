@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:padding="@dimen/normal_padding">
+
+    <ImageView
+        android:id="@+id/imgViewFoto"
+        android:layout_width="@dimen/img_width_list"
+        android:layout_height="@dimen/img_width_list"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/content_img_foto_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNombrePozo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/imgViewFoto"
+        android:textAppearance="?attr/textAppearanceListItem"
+        app:layout_constraintStart_toEndOf="@+id/imgViewFoto"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nombre Pozo" />
+
+    <TextView
+        android:id="@+id/txtTapado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNombrePozo"
+        android:layout_alignStart="@+id/txtNombrePozo"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/txtNombrePozo"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombrePozo"
+        tools:text="Tapado: Si" />
+
+    <TextView
+        android:id="@+id/txtAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTapado"
+        android:layout_alignStart="@+id/txtTapado"
+        app:layout_constraintStart_toStartOf="@+id/txtTapado"
+        app:layout_constraintTop_toBottomOf="@+id/txtTapado"
+        tools:text="Altura = 1.66 m" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeEstado"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="160dp"
+        app:backgroundTint="@color/estado_por_defecto"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgViewFoto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle" />
+
+    <ImageView
+        android:id="@+id/imgBtnEliminarPozo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txtTapado"
+        android:contentDescription="@string/content_img_eliminar_pozo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shapeEstado"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_delete_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

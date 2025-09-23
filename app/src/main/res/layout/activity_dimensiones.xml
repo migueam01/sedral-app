@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:scrollbars="vertical"
+    tools:context=".ui.actividades.Dimensiones">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbarDimensiones"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTapa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/top_linear"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDimensiones">
+
+            <TextView
+                android:id="@+id/txtValorTapa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/editTextTapa"
+                android:text="@string/label_tapa_b"
+                android:textColor="#546E7A" />
+
+            <EditText
+                android:id="@+id/editTextTapa"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:ems="4"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAlto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/top_linear"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutTapa">
+
+            <TextView
+                android:id="@+id/txtAltura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/editTextAlto"
+                android:text="@string/label_alto"
+                android:textColor="#546E7A" />
+
+            <EditText
+                android:id="@+id/editTextAlto"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:ems="4"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAncho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/top_linear"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutAlto">
+
+            <TextView
+                android:id="@+id/txtAncho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/editTextAncho"
+                android:text="@string/label_ancho_B"
+                android:textColor="#546E7A" />
+
+            <EditText
+                android:id="@+id/editTextAncho"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:ems="4"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgViewEsquemaPozo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/content_img_esquema"
+            android:src="@drawable/esquema"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayoutAlto"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDimensiones" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFluido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgViewEsquemaPozo">
+
+            <TextView
+                android:id="@+id/txtFluido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tipo_fluido"
+                android:textColor="#546E7A" />
+
+            <Spinner
+                android:id="@+id/spinnerFluido"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:entries="@array/spinner_sistema" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutFluido">
+
+            <TextView
+                android:id="@+id/txtEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_estado_pozo"
+                android:textColor="#546E7A" />
+
+            <Spinner
+                android:id="@+id/spinnerEstadoPozo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:entries="@array/spinner_estado" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAvanzarTuberias"
+            android:layout_width="@dimen/layout_width_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/alice"
+            android:text="@string/button_siguiente"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_button"
+            android:textStyle="bold|italic"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutEstado" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

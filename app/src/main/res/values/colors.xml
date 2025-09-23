@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2962ff</color>
+    <color name="colorPrimaryDark">#0039cb</color>
+    <color name="colorAccent">#4fc3f7</color>
+    <color name="primary_light">#E3F2FD</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="text_color">#1B2836</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="new_folder">#0D47A1</color>
+    <color name="new_project">#0D47A1</color>
+    <color name="descarga">#616161</color>
+    <color name="ic_done">#81C784</color>
+    <color name="ic_off">#F42B2B</color>
+    <color name="ic_on">#238528</color>
+    <color name="background_photo">#000000</color>
+
+    //Estado del pozo
+    <color name="estado_bueno">#26952A</color>
+    <color name="estado_regular">#F0E36B</color>
+    <color name="estado_malo">#C10000</color>
+    <color name="estado_por_defecto">#A29D9F</color>
+</resources>

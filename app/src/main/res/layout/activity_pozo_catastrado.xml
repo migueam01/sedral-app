@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:scrollbars="vertical"
+    tools:context=".ui.actividades.PozoCatastrado">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbarPozo"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNombrePozo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarPozo">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutPozo"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="noExcludeDescendants">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputCodigoPozo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height_spinner"
+                    android:hint="@string/hint_codigo_pozo"
+                    android:inputType="textCapCharacters" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkTapado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:minHeight="48dp"
+                android:text="@string/check_tapado" />
+
+            <ImageButton
+                android:id="@+id/imgBtnCrearPozo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@color/primary_light"
+                android:contentDescription="@string/content_toma_foto_u"
+                app:srcCompat="@drawable/ic_crear" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutNombrePozo">
+
+            <TextView
+                android:id="@+id/txtSector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_sector"
+                android:textColor="#546E7A" />
+
+            <TextView
+                android:id="@+id/txtSectorDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:text="@string/label_sector"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSistema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSector">
+
+            <TextView
+                android:id="@+id/txtTipoSistema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tipo_sistema"
+                android:textColor="#546E7A" />
+
+            <Spinner
+                android:id="@+id/spinnerTipoSistema"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:entries="@array/spinner_sistema" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutRealizado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            app:layout_constraintStart_toStartOf="@+id/linearLayoutResponsable"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSistema">
+
+            <TextView
+                android:id="@+id/txtRealizado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_responsable"
+                android:textColor="#546E7A" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutResponsable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_main_title"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSistema">
+
+            <Spinner
+                android:id="@+id/spinnerResponsable"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/imgBtnCrearResponsable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_agregar_responsable"
+                android:src="@drawable/account_plus"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEditarResponsable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_editar_responsable"
+                android:src="@drawable/account_edit"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEliminarResponsable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_eliminar_responsable"
+                android:src="@drawable/ic_delete"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutDsc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            app:layout_constraintStart_toStartOf="@+id/linearLayoutDescarga"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutResponsable">
+
+            <TextView
+                android:id="@+id/txtDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_descarga"
+                android:textColor="#546E7A" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutDescarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_main_title"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutResponsable">
+
+            <Spinner
+                android:id="@+id/spinnerDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/imgBtnAgregarDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_agregar_descarga"
+                android:src="@drawable/waves"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEditarDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_editar_descarga"
+                android:src="@drawable/ic_edit"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEliminarDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_eliminar_descarga"
+                android:src="@drawable/ic_delete"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/dividerFotos"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_divider"
+            android:layout_marginTop="@dimen/margin_left_linear"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDescarga" />
+
+        <TextView
+            android:id="@+id/txtFotoUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_left_linear"
+            android:text="@string/label_foto_u"
+            android:textColor="#546E7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerFotos" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFotoU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_divider_pozos"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtFotoUbicacion">
+
+            <ImageButton
+                android:id="@+id/imgBtnFotoUbicacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/primary_light"
+                android:contentDescription="@string/content_toma_foto_u"
+                app:srcCompat="@drawable/ic_camara_disabled" />
+
+            <ImageView
+                android:id="@+id/imgViewFotoU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:contentDescription="@string/content_ver_foto_u" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtFotoInterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/top_divider_pozos"
+            android:text="@string/label_foto_i"
+            android:textColor="#546E7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutFotoU" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFotoI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_divider_pozos"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtFotoInterior">
+
+            <ImageButton
+                android:id="@+id/imgBtnFotoInterior"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/primary_light"
+                android:contentDescription="@string/content_toma_foto_i"
+                app:srcCompat="@drawable/ic_camara_disabled" />
+
+            <ImageView
+                android:id="@+id/imgViewFotoI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:contentDescription="@string/content_img_foto_i" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSiguientePozo"
+            android:layout_width="@dimen/layout_width_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/alice"
+            android:text="@string/button_siguiente"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_button"
+            android:textStyle="bold|italic"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutFotoI" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

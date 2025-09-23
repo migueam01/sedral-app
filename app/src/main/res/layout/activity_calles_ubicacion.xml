@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:scrollbars="vertical"
+    tools:context=".ui.actividades.CallesUbicacion">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbarCalles"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutOE"
+            android:layout_width="@dimen/layout_width_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:gravity="center"
+            android:importantForAutofill="noExcludeDescendants"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarCalles">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputOE"
+                android:layout_width="@dimen/layout_width_button"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:hint="@string/hint_calle_oe"
+                android:inputType="textCapWords"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutNS"
+            android:layout_width="@dimen/layout_width_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_layoutEdit"
+            android:gravity="center"
+            android:importantForAutofill="noExcludeDescendants"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutOE">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputNS"
+                android:layout_width="@dimen/layout_width_button"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:hint="@string/hint_calle_ns"
+                android:inputType="textCapWords"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ToggleButton
+            android:id="@+id/toggleBtnGPS"
+            android:layout_width="@dimen/dimen_toggle_location"
+            android:layout_height="@dimen/dimen_toggle_location"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/toogle_gps"
+            android:contentDescription="@string/button_off_coordenadas"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutNS" />
+
+        <TextView
+            android:id="@+id/txtNorte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="48dp"
+            android:labelFor="@+id/editTextNorte"
+            android:text="@string/label_norte"
+            android:textColor="#546E7A"
+            app:layout_constraintStart_toEndOf="@+id/toggleBtnGPS"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutNS" />
+
+        <EditText
+            android:id="@+id/editTextNorte"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height_spinner"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
+            android:ems="7"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/txtNorte"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutNS" />
+
+        <TextView
+            android:id="@+id/txtEste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:labelFor="@+id/editTextEste"
+            android:text="@string/label_este"
+            android:textColor="#546E7A"
+            app:layout_constraintStart_toStartOf="@+id/txtNorte"
+            app:layout_constraintTop_toBottomOf="@+id/txtNorte" />
+
+        <EditText
+            android:id="@+id/editTextEste"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height_spinner"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:ems="7"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextNorte"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNorte" />
+
+        <TextView
+            android:id="@+id/txtCota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:labelFor="@+id/editTextCota"
+            android:text="@string/label_cota"
+            android:textColor="#546E7A"
+            app:layout_constraintStart_toStartOf="@+id/txtEste"
+            app:layout_constraintTop_toBottomOf="@+id/txtEste" />
+
+        <EditText
+            android:id="@+id/editTextCota"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height_spinner"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:ems="7"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextEste"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEste" />
+
+        <TextView
+            android:id="@+id/txtSrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:labelFor="@+id/editTextSrid"
+            android:text="@string/label_srid"
+            android:textColor="#546E7A"
+            app:layout_constraintStart_toStartOf="@+id/txtCota"
+            app:layout_constraintTop_toBottomOf="@+id/txtCota" />
+
+        <EditText
+            android:id="@+id/editTextSrid"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height_spinner"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:ems="7"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="number|none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextCota"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCota" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutUTM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSrid">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtUtm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_utm"
+                    android:textColor="#546E7A" />
+
+                <TextView
+                    android:id="@+id/txtZona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_top_list" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/top_divider"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtAproximacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_aproximacion"
+                    android:textColor="#546E7A" />
+
+                <TextView
+                    android:id="@+id/txtAproximacionDato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_top_list" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCalzada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_calzada"
+                    android:textColor="#546E7A" />
+
+                <Spinner
+                    android:id="@+id/spinnerCalzada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/layout_height_spinner"
+                    android:layout_marginStart="@dimen/margin_left_linear"
+                    android:entries="@array/spinner_calzada" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSiguienteActividad"
+            android:layout_width="@dimen/layout_width_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/alice"
+            android:text="@string/button_siguiente"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_button"
+            android:textStyle="bold|italic"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutUTM"
+            tools:ignore="VisualLintButtonSize" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

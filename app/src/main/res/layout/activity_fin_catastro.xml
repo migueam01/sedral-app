@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:scrollbars="vertical"
+    tools:context=".ui.actividades.FinCatastro">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbarFinal"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imagenFotoPozo"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/top_final"
+            android:contentDescription="@string/content_img_foto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarFinal" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPozoH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenFotoPozo">
+
+            <TextView
+                android:id="@+id/txtPozo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alice"
+                android:text="@string/label_pozo_final"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="@dimen/text_titles" />
+
+            <TextView
+                android:id="@+id/txtHPozo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:fontFamily="@font/alice"
+                android:text="@string/label_altura"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="@dimen/text_titles" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTapadoEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutPozoH">
+
+            <TextView
+                android:id="@+id/textViewTapado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alice"
+                android:text="@string/label_tapado_final"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="@dimen/text_titles" />
+
+            <TextView
+                android:id="@+id/textViewEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:fontFamily="@font/alice"
+                android:text="@string/label_estado_fin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="@dimen/text_titles" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutDescarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutTapadoEstado">
+
+            <TextView
+                android:id="@+id/textViewDescarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alice"
+                android:text="@string/label_descarga_final"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="@dimen/text_titles" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayoutDescarga">
+
+            <TextView
+                android:id="@+id/textViewFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_fecha"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        </FrameLayout>
+
+        <View
+            android:id="@+id/dividerComentarios"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_divider"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayoutFecha" />
+
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:labelFor="@+id/editTextObservacion"
+            android:text="@string/label_observaciones"
+            android:textColor="#546E7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.193"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerComentarios" />
+
+        <LinearLayout
+            android:id="@+id/linerLayoutObservacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_titles"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView45">
+
+            <EditText
+                android:id="@+id/editTextObservacion"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_input_observacion"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_border_textview"
+                android:ems="11"
+                android:importantForAutofill="noExcludeDescendants"
+                android:inputType="textMultiLine|textCapSentences"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonAudio"
+                android:layout_width="@dimen/dimen_toggle_audio"
+                android:layout_height="@dimen/dimen_toggle_audio"
+                android:layout_gravity="center"
+                android:background="@drawable/toogle_audio"
+                android:contentDescription="@string/content_img_audio"
+                android:textOff=""
+                android:textOn="" />
+
+            <ImageButton
+                android:id="@+id/imgBtnPlay"
+                android:layout_width="@dimen/dimen_toggle_audio"
+                android:layout_height="@dimen/dimen_toggle_audio"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_play"
+                android:contentDescription="@string/content_img_audio"
+                android:textOff=""
+                android:textOn=""
+                tools:ignore="ImageContrastCheck" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/dividerFinal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/top_divider"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linerLayoutObservacion" />
+
+        <LinearLayout
+            android:id="@+id/linearBotonesFinal"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerFinal">
+
+            <Button
+                android:id="@+id/btnNuevoPozo"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/alice"
+                android:text="@string/button_nuevo"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_button"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@color/colorAccent" />
+
+            <Button
+                android:id="@+id/btnInicio"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/alice"
+                android:text="@string/button_inicio"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_button"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

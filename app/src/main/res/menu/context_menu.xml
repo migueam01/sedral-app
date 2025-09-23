@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/foto_ubicacion_item"
+        android:title="@string/view_context_photo" />
+    <item
+        android:id="@+id/foto_interior_item"
+        android:title="@string/view_context_photo_interior" />
+
+</menu>

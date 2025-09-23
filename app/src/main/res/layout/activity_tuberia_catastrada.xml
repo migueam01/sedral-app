@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:scrollbars="vertical"
+    tools:context=".ui.actividades.TuberiaCatastrada">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintTuberia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbarTuberia"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearPozoFin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarTuberia">
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:labelFor="@+id/editTextPozoConectado"
+                android:text="@string/label_pozo_contiguo"
+                android:textColor="#546E7A" />
+
+            <EditText
+                android:id="@+id/editTextPozoConectado"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_text_input"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:ems="4"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters" />
+
+            <Button
+                android:id="@+id/btnValidarPozo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/alice"
+                android:text="@string/btn_verificar_pozo"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@color/colorAccent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutOrientacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearPozoFin">
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_orientacion"
+                android:textColor="#546E7A" />
+
+            <Spinner
+                android:id="@+id/spinnerOrientacion"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:entries="@array/spinner_orientacion" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFlujo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutOrientacion">
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_flujo"
+                android:textColor="#546E7A" />
+
+            <Spinner
+                android:id="@+id/spinnerFlujo"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:entries="@array/spinner_flujo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAlturaPozo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutFlujo">
+
+            <TextView
+                android:id="@+id/txtAlturaPozo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_altura_pozo"
+                android:textSize="@dimen/text_heights"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtAlturaPozoDato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/diametro_calculado"
+                android:textSize="@dimen/text_heights"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAlturas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutAlturaPozo">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutBase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="noExcludeDescendants">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editInputBase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_text_input"
+                    android:ems="5"
+                    android:hint="@string/hint_altura_base"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutCorona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:importantForAutofill="noExcludeDescendants">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editInputCorona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_text_input"
+                    android:ems="5"
+                    android:hint="@string/hint_altura_corona"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCalcDiam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_linear"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutAlturas">
+
+            <Button
+                android:id="@+id/btnCalcularDiametro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/alice"
+                android:text="@string/button_diametro"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/txtDiametroDato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:text="@string/label_calc_diametro"
+                android:textColor="#546E7A" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutMaterialTub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalcDiam">
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_material"
+                android:textColor="#546E7A" />
+
+            <Spinner
+                android:id="@+id/spinnerMaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:entries="@array/spinner_material_tub" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearFunciona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutMaterialTub">
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_funciona_tub"
+                android:textColor="#546E7A"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupFunciona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/radioBtnFuncionaSi"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/radio_si"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioButton
+                    android:id="@+id/radioBtnFuncionaNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/radio_no"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAgregarTuberia"
+            android:layout_width="@dimen/layout_width_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@color/colorAccent"
+            android:enabled="false"
+            android:fontFamily="@font/alice"
+            android:text="@string/button_agregar"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_button"
+            android:textStyle="bold|italic"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearFunciona" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

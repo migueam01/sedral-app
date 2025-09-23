@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:scrollbars="vertical"
+    tools:context=".ui.actividades.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbarDatos"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearTituloMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDatos">
+
+            <TextView
+                android:id="@+id/txtTitulo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alice"
+                android:gravity="center"
+                android:text="@string/label_levantamiento"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtTitulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/alice"
+                android:gravity="center"
+                android:text="@string/label_catastral"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutGadm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            app:layout_constraintStart_toStartOf="@+id/linearLayoutGadm"
+            app:layout_constraintTop_toBottomOf="@+id/linearTituloMain">
+
+            <TextView
+                android:id="@+id/txtGadm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_gadm"
+                android:textColor="#546E7A"
+                android:textSize="@dimen/textos" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutGadm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_main_title"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearTituloMain">
+
+            <Spinner
+                android:id="@+id/spinnerGadm"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_gravity="center"
+                android:prompt="@string/spinner_gadm"
+                android:spinnerMode="dialog" />
+
+            <ImageButton
+                android:id="@+id/imgBtnAgregarGadm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_agregar_gadm"
+                android:src="@drawable/ic_gadm"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEditarGadm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_editar_gadm"
+                android:src="@drawable/folder_edit"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEliminarGadm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_eliminar_gadm"
+                android:src="@drawable/ic_delete" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/framLayoutProyecto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_inicio"
+            app:layout_constraintStart_toStartOf="@+id/linearLayoutProyecto"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutGadm">
+
+            <TextView
+                android:id="@+id/txtProyecto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_proyecto"
+                android:textColor="#546E7A"
+                android:textSize="@dimen/textos" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutProyecto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_main_title"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutGadm">
+
+            <Spinner
+                android:id="@+id/spinnerProyecto"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:prompt="@string/spinner_proyecto"
+                android:spinnerMode="dialog" />
+
+            <ImageButton
+                android:id="@+id/imgBtnAgregarProyecto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_agregar_proyecto"
+                android:src="@drawable/briefcase_plus" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEditarProyecto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_editar_proyecto"
+                android:src="@drawable/folder_edit"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEliminarProyecto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_eliminar_proyecto"
+                android:src="@drawable/ic_delete"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_main"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutProyecto">
+
+            <Button
+                android:id="@+id/btnCatastrar"
+                android:layout_width="@dimen/layout_width_button"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/alice"
+                android:text="@string/button_catastrar"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_button"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/btnFinalizar"
+                android:layout_width="@dimen/layout_width_button"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_top_titles"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/alice"
+                android:text="@string/button_salir"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_button"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

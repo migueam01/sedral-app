@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    tools:context=".ui.actividades.ListaPozos">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbarListaPozos"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutSector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_titles"
+            app:layout_constraintStart_toStartOf="@+id/linearLayoutSector"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarListaPozos">
+
+            <TextView
+                android:id="@+id/txtBarrio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_sector"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separa_5"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayoutSector">
+
+            <Spinner
+                android:id="@+id/spinnerSector"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/layout_height_spinner"
+                android:layout_gravity="center"
+                android:prompt="@string/prompt_spinner_sector"
+                android:spinnerMode="dialog" />
+
+            <ImageButton
+                android:id="@+id/imgBtnAgregarSector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_agregar_sector"
+                android:src="@drawable/ic_add_sector" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEditarSector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_editar_sector"
+                android:src="@drawable/ic_edit_location" />
+
+            <ImageButton
+                android:id="@+id/imgBtnEliminarSector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_left_icons"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/content_img_eliminar_sector"
+                android:src="@drawable/ic_delete" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/dividerPozo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_divider"
+            android:layout_marginTop="@dimen/top_divider_pozos"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSector" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            app:iconifiedByDefault="false"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerPozos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerPozo"
+            app:queryHint="@string/hint_buscar_pozo" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPozos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabNuevoPozo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:backgroundTint="@color/colorAccent"
+            android:clickable="true"
+            android:contentDescription="@string/content_fab_nuevo"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_action_add"
+            tools:ignore="ImageContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,243 @@
+<resources>
+    <string name="app_name">Alicamp</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Actividad de inicio -->
+
+    <string name="button_start">COMENZAR</string>
+    <string name="content_img_alicamp">Imagen Alicamp</string>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="activity_datos_proyecto">PROYECTO</string>
+    <string name="label_levantamiento">LEVANTAMIENTO DE INFORMACIÓN</string>
+    <string name="label_catastral">EN CAMPO</string>
+    <string name="spinner_gadm">Elija GADM</string>
+    <string name="spinner_proyecto">Elija Proyecto</string>
+    <string name="content_img_agregar_gadm">Añadir GADM</string>
+    <string name="content_img_editar_gadm">Editar GADM</string>
+    <string name="content_img_editar_proyecto">Editar proyecto</string>
+    <string name="content_img_eliminar_gadm">Eliminar GADM</string>
+    <string name="content_img_eliminar_proyecto">Eliminar proyecto</string>
+    <string name="content_img_agregar_proyecto">Añadir proyecto</string>
+    <string name="label_proyecto">Proyecto</string>
+    <string name="button_catastrar">CATASTRAR RED</string>
+    <string name="button_salir">SALIR</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- LISTA DE POZOS -->
+    <string name="activity_lista_pozos">Pozos</string>
+    <string name="label_titulo_lista">GADM</string>
+    <string name="label_sector">Barrio/Sector</string>
+    <string name="content_img_agregar_sector">Añadir sector</string>
+    <string name="content_img_editar_sector">Editar sector</string>
+    <string name="content_img_eliminar_sector">Eliminar sector</string>
+    <string name="content_img_eliminar_pozo">Eliminar pozo</string>
+    <string name="eliminar_context_item">Delete</string>
+    <string name="view_context_photo">Ver foto ubicación</string>
+    <string name="view_context_photo_interior">Ver foto interior</string>
+    <string name="prompt_spinner_sector">Seleccione un sector</string>
+    <string name="content_fab_nuevo">Nuevo pozo</string>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="activity_pozo_catastrado">POZO CATASTRADO</string>
+    <string name="hint_codigo_pozo">Nombre</string>
+    <string name="check_tapado">Tapado</string>
+    <string name="label_tipo_sistema">Tipo de sistema</string>
+    <string name="label_descarga">Descarga</string>
+    <string name="label_responsable">Realizado por</string>
+    <string name="content_img_agregar_responsable">Añadir responsable pozo</string>
+    <string name="content_img_editar_responsable">Editar responsable</string>
+    <string name="content_img_eliminar_responsable">Eliminar responsable</string>
+    <string name="content_img_agregar_descarga">Añadir descarga</string>
+    <string name="content_img_editar_descarga">Editar descarga</string>
+    <string name="content_img_eliminar_descarga">Eliminar descarga</string>
+    <string name="content_img_foto_u">Verifica foto ubicación</string>
+    <string name="content_toma_foto_u">Foto ubicación pozo</string>
+    <string name="content_ver_foto_u">Ver foto ubicación</string>
+    <string name="content_toma_foto_i">Foto interior</string>
+    <string name="content_img_foto_i">Verifica foto interior</string>
+    <string name="label_fecha">30/10/2020</string>
+    <string name="label_foto_u">Foto ubicación</string>
+    <string name="label_foto_i">Foto interior</string>
+    <string name="menu_foto_u">Ver foto ubicación</string>
+    <string name="menu_foto_i">Ver foto interior</string>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="activity_calles">CALLES - UBICACIÓN</string>
+    <string name="hint_calle_oe">Calle O-E</string>
+    <string name="hint_calle_ns">Calle N-S</string>
+    <string name="button_off_coordenadas">LEER COORDENADAS</string>
+    <string name="button_on_coordenadas">DETENER LECTURA</string>
+    <string name="label_utm">UTM WGS84 Zona </string>
+    <string name="label_norte">Norte</string>
+    <string name="label_este">Este</string>
+    <string name="label_cota">Cota</string>
+    <string name="label_srid">SRID</string>
+    <string name="label_msnm">msnm</string>
+    <string name="label_aproximacion">Aproximación(m): </string>
+    <string name="hint_norte">Coordenada norte</string>
+    <string name="hint_este">Coordenada este</string>
+    <string name="hint_cota">Cota</string>
+    <string name="label_calzada">Tipo de calzada</string>
+    <string-array name="spinner_calzada">
+        <item>Seleccione</item>
+        <item>Adoquinado</item>
+        <item>Asfaltado</item>
+        <item>Lastre-Ripio</item>
+        <item>Tierra</item>
+        <item>Empedrado</item>
+        <item>Potrero-Terreno</item>
+        <item>SD</item>
+    </string-array>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="activity_lista_tuberias">LISTA DE TUBERÍAS</string>
+    <string name="label_titulo_tub1">TUBERÍAS CONECTADAS AL POZO</string>
+    <string name="label_entra_recycler">Entra desde </string>
+    <string name="label_sale_recycler">Sale hacia </string>
+    <string name="label_inicio_recycler">Inicio hacia</string>
+    <string name="label_altura_recycler">H base = </string>
+    <string name="label_diametro_recycler">Diámetro = </string>
+    <string name="label_texto_circulo">N</string>
+    <string name="content_fab_nueva_tub">Nueva tubería</string>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="activity_tuberia">TUBERÍA CATASTRADA</string>
+    <string name="label_pozo_contiguo">Pozo conectado</string>
+    <string name="label_orientacion">Orientación</string>
+    <string name="label_altura_pozo">Altura pozo </string>
+    <string-array name="spinner_orientacion">
+        <item>Seleccione</item>
+        <item>Norte</item>
+        <item>Sur</item>
+        <item>Este</item>
+        <item>Oeste</item>
+        <item>SD</item>
+
+    </string-array>
+    <string name="hint_altura_base">H base</string>
+    <string name="hint_altura_corona">H corona</string>
+    <string name="button_diametro">CALCULAR DIÁMETRO</string>
+    <string name="label_calc_diametro">0</string>
+    <string name="label_unidad">mm</string>
+    <string name="label_material">Material</string>
+    <string-array name="spinner_material_tub">
+        <item>Seleccione</item>
+        <item>PVC</item>
+        <item>HS</item>
+        <item>HA</item>
+        <item>Otros</item>
+        <item>SD</item>
+    </string-array>
+    <string name="label_flujo">Flujo</string>
+    <string-array name="spinner_flujo">
+        <item>Seleccione</item>
+        <item>Entra</item>
+        <item>Sale</item>
+        <item>Inicio</item>
+        <item>SD</item>
+    </string-array>
+    <string name="label_estado_tub">Estado</string>
+    <string name="label_funciona_tub">Funciona</string>
+    <string name="btn_verificar_pozo">Verificar</string>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="tab_dimensiones">DIMENSIONES POZO (m)</string>
+    <string name="label_titulo_dimen">Dimensiones del pozo (m)</string>
+    <string name="label_tapa_b">Tapa (b)</string>
+    <string name="label_alto">Alto (HP)</string>
+    <string name="label_ancho_B">Ancho (B)</string>
+    <string name="content_img_esquema">Esquema pozo</string>
+    <string name="label_tipo_fluido">Tipo de fluido</string>
+    <string name="label_observaciones">Observaciones</string>
+    <string name="label_estado_pozo">Estado del pozo</string>
+
+    <!-- *************************************************************************************** -->
+
+    <string name="activity_fin">FIN CATASTRO</string>
+    <string name="label_final_catastro">FINALIZAR CATASTRO</string>
+    <string name="label_pozo_final">Pozo:</string>
+    <string name="label_altura">H = </string>
+    <string name="label_estado_fin">Estado: </string>
+    <string name="label_tapado_final">Tapado: </string>
+    <string name="label_calles">Calles: </string>
+    <string name="label_descarga_final">Descarga: </string>
+    <string name="button_nuevo">NUEVO POZO</string>
+    <string name="button_inicio">FINALIZAR CATASTRO</string>
+    <string name="opcion_tapado">N/D</string>
+    <string name="content_img_audio">Graba Audio</string>
+    <string name="content_img_play">Reproduce Audio</string>
+    <string name="button_of_audio">GRABAR AUDIO</string>
+    <string name="button_on_audio">DETENER AUDIO</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Alert dialog -->
+
+    <string name="titulo_dialog_gadm">AGREGAR GADM</string>
+    <string name="titulo_dialog_proyecto">AGREGAR PROYECTO</string>
+    <string name="titulo_dialog_sector">AGREGAR SECTOR</string>
+    <string name="titulo_dialog_usuario">AGREGAR USUARIO</string>
+    <string name="dialog_hint_nombre">Nombre</string>
+    <string name="dialog_hint_ubicacion">Ubicación</string>
+    <string name="message_validacion_name">"Ingrese nombre"</string>
+    <string name="title_dialog_warning">Advertencia</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- FolderHandling -->
+    <string name="folder_created">creado exitosamente</string>
+    <string name="message_dont_create">No se pudo crear el </string>
+    <string name="gadm_exist">El GADM ya existe</string>
+    <string name="message_exists"> ya existe</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Layout para mostrar la lista de pozos -->
+
+    <string name="content_img_foto_list">Foto del pozo</string>
+    <string name="label_altura_pozo_list">Altura = </string>
+    <string name="label_tapado_list">Tapado: </string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Textos comunes para las actividades y diálogos-->
+
+    <string name="label_gadm">GADM</string>
+    <string name="button_siguiente">SIGUIENTE</string>
+    <string name="button_agregar">AGREGAR</string>
+    <string name="button_guardar">ACTUALIZAR</string>
+    <string name="hint_buscar_pozo">Buscar pozo</string>
+    <string name="radio_si">Si</string>
+    <string name="radio_no">No</string>
+    <string-array name="spinner_estado">
+        <item>Seleccione</item>
+        <item>Bueno</item>
+        <item>Regular</item>
+        <item>Malo</item>
+        <item>SD</item>
+    </string-array>
+    <string name="label_tipo">Tipo</string>
+    <string-array name="spinner_sistema">
+        <item>Seleccione</item>
+        <item>SAN</item>
+        <item>PLV</item>
+        <item>COM</item>
+        <item>SD</item>
+    </string-array>
+    <string name="content_img_foto">Foto pozo</string>
+    <string name="label_metro">m</string>
+    <string name="label_mm">mm</string>
+    <string name="ubicacion_pozo">Ubicación pozo</string>
+    <string name="interior_pozo">Interior pozo</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Textos para menu -->
+
+    <string name="menu_search">Búsqueda</string>
+    <string name="menu_upload">Exportar DB</string>
+    <string name="menu_download">Importar BD</string>
+
+</resources>
