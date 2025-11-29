@@ -27,7 +27,7 @@ public class ProyectoRepository {
     public ProyectoRepository(Context context) {
         AlicampDB db = AlicampDB.getAppDb(context);
         proyectoDAO = db.proyectoDAO();
-        apiService = RetrofitCliente.getCliente().create(ProyectoApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(ProyectoApiService.class);
     }
 
     public LiveData<Proyecto> obtenerProyectoPorId(Integer idProyecto) {

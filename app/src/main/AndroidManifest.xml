@@ -28,6 +28,7 @@
         android:theme="@style/Theme.Alicamp"
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
+
         <activity
             android:name=".ui.actividades.TuberiaCatastrada"
             android:exported="false" />
@@ -57,10 +58,13 @@
             android:exported="false" />
         <activity
             android:name=".ui.actividades.MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.actividades.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

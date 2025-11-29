@@ -7,7 +7,7 @@
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
-    <color name="text_color">#1B2836</color>
+    <color name="text_color">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="new_folder">#0D47A1</color>
     <color name="new_project">#0D47A1</color>
@@ -16,6 +16,7 @@
     <color name="ic_off">#F42B2B</color>
     <color name="ic_on">#238528</color>
     <color name="background_photo">#000000</color>
+    <color name="botones">#2574FF</color>
 
     //Estado del pozo
     <color name="estado_bueno">#26952A</color>

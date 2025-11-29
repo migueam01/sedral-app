@@ -30,6 +30,7 @@ import com.mam.alicamp.servicios.ManejoDialogos;
 import com.mam.alicamp.servicios.FolderHandling;
 import com.mam.alicamp.servicios.SweetAlertOpciones;
 import com.mam.alicamp.ui.interfaces.IEliminacion;
+import com.mam.alicamp.ui.viewmodels.AuthViewModel;
 import com.mam.alicamp.ui.viewmodels.GadmViewModel;
 import com.mam.alicamp.ui.viewmodels.ProyectoViewModel;
 import com.mam.alicamp.ui.viewmodels.SectorViewModel;
@@ -50,12 +51,15 @@ import static com.mam.alicamp.constantes.Constantes.NOMBRE_CARPETA_BASE;
 import static com.mam.alicamp.constantes.Constantes.NOMBRE_CARPETA_ARCHIVOS;
 import static com.mam.alicamp.constantes.Constantes.NOMBRE_CARPETA_MEDIA;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends PermisosActivity implements AdapterView.OnItemSelectedListener,
         ManejoDialogos.IDialogHandling, IEliminacion {
 
     private GadmViewModel gadmViewModel;
     private ProyectoViewModel proyectoViewModel;
     private SectorViewModel sectorViewModel;
+    private AuthViewModel authViewModel;
 
     private ActivityMainBinding binding;
 
@@ -87,6 +91,8 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
 
         inicializarViewModel();
 
+        verificarSesion();
+
         requestStoragePermission();
 
         inicializarObjetos();
@@ -100,6 +106,34 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
         cargarMensajesError();
 
         initListeners();
+
+        mostrarInformacionUsuario();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (authViewModel != null && !authViewModel.isLoggedIn()) {
+            irLogin();
+        }
+    }
+
+    private void mostrarInformacionUsuario() {
+        String username = authViewModel.getUsername();
+        if (!username.isEmpty()) {
+            System.out.println("Usuario " + username);
+        }
+    }
+
+    private void verificarSesion() {
+        if (authViewModel == null) {
+            irLogin();
+            return;
+        }
+
+        if (!authViewModel.isLoggedIn()) {
+            irLogin();
+        }
     }
 
     private void inicializarViewModel() {
@@ -108,6 +142,7 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
         gadmViewModel = new ViewModelProvider(this, factory).get(GadmViewModel.class);
         proyectoViewModel = new ViewModelProvider(this, factory).get(ProyectoViewModel.class);
         sectorViewModel = new ViewModelProvider(this, factory).get(SectorViewModel.class);
+        authViewModel = new ViewModelProvider(this, factory).get(AuthViewModel.class);
     }
 
     @Override
@@ -147,7 +182,7 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
 
     private void initListeners() {
         binding.spinnerGadm.setOnItemSelectedListener(this);
-        binding.btnFinalizar.setOnClickListener(v -> finish());
+        binding.btnFinalizar.setOnClickListener(v -> confirmarSalida());
         binding.imgBtnAgregarGadm.setOnClickListener(v -> crearGadm());
         binding.imgBtnEditarGadm.setOnClickListener(v -> editarGadm());
         binding.imgBtnEliminarGadm.setOnClickListener(v -> eliminarGadm());
@@ -442,5 +477,47 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
             sweetAlertOpciones.setMensaje("No existen proyectos para continuar");
             sweetAlertOpciones.mostrarDialogoError();
         }
+    }
+
+    private void confirmarSalida() {
+        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Cerrar Sesión")
+                .setContentText("¿Está seguro que desea cerrar su sesión?")
+                .setConfirmText("Sí, cerrar sesión")
+                .setCancelText("Cancelar")
+                .showCancelButton(true)
+                .setCancelClickListener(sweetAlertDialog -> {
+                    sweetAlertDialog.cancel();
+                    Toast.makeText(MainActivity.this, "Operación cancelada", Toast.LENGTH_SHORT).show();
+                })
+                .setConfirmClickListener(sweetAlertDialog -> {
+                    sweetAlertDialog.setTitleText("Procesando...")
+                            .setContentText("Cerrando su sesión")
+                            .setConfirmText("")
+                            .showCancelButton(false)
+                            .changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+
+                    new android.os.Handler().postDelayed(this::cerrarSesion, 800);
+                })
+                .show();
+    }
+
+    private void cerrarSesion() {
+        authViewModel.logout();
+
+        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Sesión cerrada")
+                .setContentText("Ha cerrado su sesión exitosamente")
+                .setConfirmText("Continuar")
+                .setConfirmClickListener(sweetAlertDialog -> {
+                    sweetAlertDialog.dismissWithAnimation();
+                    finishAffinity();
+                }).show();
+    }
+
+    private void irLogin() {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+        finish();
     }
 }

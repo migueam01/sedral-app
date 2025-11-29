@@ -633,7 +633,7 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
             }
             intentActivity();
         } catch (Exception ex) {
-            sweetAlertOpciones.setMensaje("Ingrese un Responsable o una Descarga");
+            sweetAlertOpciones.setMensaje("Seleccione un Responsable o una Descarga");
             sweetAlertOpciones.mostrarDialogoError();
         }
     }

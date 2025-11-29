@@ -37,7 +37,7 @@ public class PozoRepository {
         AlicampDB db = AlicampDB.getAppDb(context);
         pozoDAO = db.pozoDAO();
         tuberiaDAO = db.tuberiaDAO();
-        apiService = RetrofitCliente.getCliente().create(PozoApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(PozoApiService.class);
     }
 
     public LiveData<String> getMensajeError() {

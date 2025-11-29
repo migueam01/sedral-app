@@ -30,7 +30,7 @@ public class TuberiaRepository {
     public TuberiaRepository(Context context) {
         AlicampDB db = AlicampDB.getAppDb(context);
         tuberiaDAO = db.tuberiaDAO();
-        apiService = RetrofitCliente.getCliente().create(TuberiaApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(TuberiaApiService.class);
     }
 
     public LiveData<String> getMensajeError() {

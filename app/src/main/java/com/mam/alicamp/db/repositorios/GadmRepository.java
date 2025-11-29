@@ -27,7 +27,7 @@ public class GadmRepository {
     public GadmRepository(Context context) {
         AlicampDB db = AlicampDB.getAppDb(context);
         gadmDAO = db.gadmDAO();
-        apiService = RetrofitCliente.getCliente().create(GadmApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(GadmApiService.class);
     }
 
     public LiveData<String> getMensajeError() {

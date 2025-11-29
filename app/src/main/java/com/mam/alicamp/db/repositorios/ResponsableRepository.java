@@ -27,7 +27,7 @@ public class ResponsableRepository {
     public ResponsableRepository(Context context) {
         AlicampDB db = AlicampDB.getAppDb(context);
         responsableDAO = db.responsableDAO();
-        apiService = RetrofitCliente.getCliente().create(ResponsableApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(ResponsableApiService.class);
     }
 
     public LiveData<String> getMensajeError() {

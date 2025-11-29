@@ -205,7 +205,7 @@
     <!-- *************************************************************************************** -->
     <!-- Textos comunes para las actividades y diálogos-->
 
-    <string name="label_gadm">GADM</string>
+    <string name="label_gadm">GAD</string>
     <string name="button_siguiente">SIGUIENTE</string>
     <string name="button_agregar">AGREGAR</string>
     <string name="button_guardar">ACTUALIZAR</string>
@@ -239,5 +239,14 @@
     <string name="menu_search">Búsqueda</string>
     <string name="menu_upload">Exportar DB</string>
     <string name="menu_download">Importar BD</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Textos para Login -->
+    <string name="label_bienvenida">INICIAR SESIÓN</string>
+    <string name="content_login">Logo Alcantarillado</string>
+    <string name="label_usuario">Usuario</string>
+    <string name="label_password">Contraseña</string>
+    <string name="label_iniciar">INGRESAR</string>
+    <string name="label_problema_ingreso">¿Problemas para acceder? \tContacte al administrador</string>
 
 </resources>

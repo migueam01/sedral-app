@@ -34,7 +34,7 @@ public class SectorRepository {
         sectorDAO = db.sectorDAO();
         pozoDAO = db.pozoDAO();
         tuberiaDAO = db.tuberiaDAO();
-        apiService = RetrofitCliente.getCliente().create(SectorApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(SectorApiService.class);
     }
 
     public LiveData<String> getMensajeError() {

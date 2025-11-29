@@ -27,7 +27,7 @@ public class DescargaRepository {
     public DescargaRepository(Context context) {
         AlicampDB db = AlicampDB.getAppDb(context);
         descargaDAO = db.descargaDAO();
-        apiService = RetrofitCliente.getCliente().create(DescargaApiService.class);
+        apiService = RetrofitCliente.getCliente(context).create(DescargaApiService.class);
 
     }
 
