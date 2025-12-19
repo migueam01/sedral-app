@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity {
 
         inicializarViewModels();
         configurarObservadores();
-        //configurarVisibilidadPass();
 
         //Verificar si ya está logueado
         if (authViewModel.isLoggedIn()) {
@@ -40,22 +39,6 @@ public class Login extends AppCompatActivity {
 
         initListeners();
     }
-
-    /*private void configurarVisibilidadPass(){
-        binding.tilPassword.setEndIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                togglePasswordVisibilidad();
-            }
-        });
-    }
-
-    private void togglePasswordVisibilidad(){
-        if(isPasswordVisible){
-            binding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
-            binding.tilPassword.setEndIconDrawable(R.drawable.ic_visi);
-        }
-    }*/
 
     private void initListeners() {
         binding.btnLogin.setOnClickListener(v -> iniciarSesion());

@@ -57,7 +57,6 @@ public interface PozoDAO {
     @Query("UPDATE pozos SET eliminado = 1, sincronizado = 0 WHERE nombre =:nombrePozo")
     void deletePozo(String nombrePozo);
 
-    //Consulta para realizar la eliminación lógica de las tuberías
     @Query("SELECT nombre FROM pozos WHERE fk_id_sector =:idSector")
     List<String> findPozosActivosBySector(Integer idSector);
 

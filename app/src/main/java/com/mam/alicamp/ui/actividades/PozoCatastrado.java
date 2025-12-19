@@ -10,7 +10,6 @@ import static com.mam.alicamp.constantes.Constantes.PATH_FOTO;
 import static com.mam.alicamp.constantes.Constantes.NOMBRE_POZO;
 import static com.mam.alicamp.constantes.Constantes.PROYECTO_ID;
 import static com.mam.alicamp.constantes.Constantes.REGRESANDO;
-import static com.mam.alicamp.constantes.Constantes.RESPONSABLE;
 import static com.mam.alicamp.constantes.Constantes.SECTOR_ID;
 import static com.mam.alicamp.constantes.Constantes.SECTOR_NOMBRE;
 import static com.mam.alicamp.servicios.Validaciones.emptyTextInputLayout;
@@ -28,6 +27,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,7 +42,6 @@ import android.widget.Toast;
 import com.mam.alicamp.R;
 import com.mam.alicamp.controlesUI.DescargaSpinner;
 import com.mam.alicamp.controlesUI.ISpinner;
-import com.mam.alicamp.controlesUI.ResponsableSpinner;
 import com.mam.alicamp.controlesUI.ValoresSpinner;
 import com.mam.alicamp.databinding.ActivityPozoCatastradoBinding;
 import com.mam.alicamp.db.entidades.Descarga;
@@ -51,7 +50,6 @@ import com.mam.alicamp.db.entidades.Responsable;
 import com.mam.alicamp.servicios.ManejoDialogos;
 import com.mam.alicamp.servicios.ManejoFechas;
 import com.mam.alicamp.servicios.SweetAlertOpciones;
-import com.mam.alicamp.servicios.Utilitarios;
 import com.mam.alicamp.ui.interfaces.IEliminacion;
 import com.mam.alicamp.ui.viewmodels.DescargaViewModel;
 import com.mam.alicamp.ui.viewmodels.PozoViewModel;
@@ -79,6 +77,7 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
 
     private List<Pozo> pozos;
     private Pozo pozo;
+    private Responsable responsable;
 
     private String oldName;
     private String directorioPozo;
@@ -132,13 +131,13 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
 
         clearFocusEdits();
 
-        cargarSpinnerResponsable();
-
         cargarSpinnerDescarga();
 
         cargarMensajesError();
 
         initListeners();
+
+        obtenerResponsable();
     }
 
     @Override
@@ -250,9 +249,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
         binding.imgBtnAgregarDescarga.setOnClickListener(v -> crearDescarga());
         binding.imgBtnEditarDescarga.setOnClickListener(v -> editarDescarga());
         binding.imgBtnEliminarDescarga.setOnClickListener(v -> eliminarDescarga());
-        binding.imgBtnCrearResponsable.setOnClickListener(v -> crearResponsable());
-        binding.imgBtnEditarResponsable.setOnClickListener(v -> editarResponsable());
-        binding.imgBtnEliminarResponsable.setOnClickListener(v -> eliminarResponsable());
         binding.imgViewFotoU.setOnClickListener(v -> clicFotoUbicacion());
         binding.imgViewFotoI.setOnClickListener(v -> clicFotoInterior());
         binding.imgBtnFotoUbicacion.setOnClickListener(v -> cambiarValorFotoU());
@@ -270,15 +266,14 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
         }
     }
 
-    private void cargarSpinnerResponsable() {
-        responsableViewModel.getListaResponsables().observe(this, listaResponsables -> {
-            if (listaResponsables != null) {
-                ArrayAdapter<Responsable> responsableAdapter = new ArrayAdapter<>(this,
-                        android.R.layout.simple_spinner_dropdown_item, listaResponsables);
-                responsableAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                binding.spinnerResponsable.setAdapter(responsableAdapter);
+    private void obtenerResponsable() {
+        SharedPreferences sharedPreferences = getSharedPreferences("session", MODE_PRIVATE);
+        String username = sharedPreferences.getString("username", "Usuario");
+        responsableViewModel.obtenerResponsablePorUsername(username).observe(this, resp -> {
+            if (resp != null) {
+                responsable = resp;
+                binding.txtNombreResponsable.setText(responsable.toString());
             }
-            seleccionarItemSpinnerResponsable(listaResponsables);
         });
     }
 
@@ -292,20 +287,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
             }
             seleccionarItemSpinnerDescarga(listaDescargas);
         });
-    }
-
-    private void seleccionarItemSpinnerResponsable(List<Responsable> listaResponsables) {
-        if (editando || regresando) {
-            pozoViewModel.obtenerPozoPorNombre(nombrePozo).observe(this, pozoObjeto -> {
-                if (pozoObjeto != null) {
-                    ISpinner<Responsable> iSpinner = new ResponsableSpinner();
-                    int idSpinner = iSpinner.getIdSpinner(listaResponsables, pozoObjeto.getIdResponsable());
-                    if (idSpinner != -1) {
-                        binding.spinnerResponsable.setSelection(idSpinner);
-                    }
-                }
-            });
-        }
     }
 
     private void seleccionarItemSpinnerDescarga(List<Descarga> listaDescargas) {
@@ -345,7 +326,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
             directorioPozo = pozoBuscado.getPathMedia();
             Objects.requireNonNull(binding.inputLayoutPozo.getEditText()).setText(pozoBuscado.getNombre());
             binding.inputLayoutPozo.setEnabled(false);
-            binding.spinnerResponsable.setEnabled(false);
             seleccionarCheckTapado(pozoBuscado);
         }
     }
@@ -402,74 +382,32 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
 
     private void operarBD(String tipoObjeto, String nombreNuevo) {
         try {
-            switch (tipoObjeto) {
-                case RESPONSABLE:
-                    try {
-                        String[] nombreCompleto;
-                        String nombre, apellido;
-                        if (oldName == null) {
-                            nombreCompleto = Utilitarios.separarString(nombreNuevo);
-                            nombre = nombreCompleto[0];
-                            apellido = nombreCompleto[1];
-                            responsableViewModel.insertar(new Responsable(nombre, apellido, "",
-                                    "", false));
-                            sweetAlertOpciones.setMensaje("Responsable ingresado correctamente " +
-                                    "a la base de datos");
+            if (tipoObjeto.equals(DESCARGA)) {
+                if (oldName == null) {
+                    descargaViewModel.insertar(new Descarga(nombreNuevo, "", false));
+                    sweetAlertOpciones.setMensaje("Descarga ingresada correctamente a la base de datos");
+                    sweetAlertOpciones.mostrarDialogoSuccess();
+                } else {
+                    Descarga descargaSeleccionada = (Descarga) binding.spinnerDescarga
+                            .getSelectedItem();
+                    if (descargaSeleccionada != null) {
+                        if (opcionEditarEliminar == 1) {
+                            descargaViewModel.eliminar(descargaSeleccionada.getIdDescarga());
+                            sweetAlertOpciones.setMensaje("Descarga eliminada correctamente " +
+                                    "de la base de datos");
                             sweetAlertOpciones.mostrarDialogoSuccess();
-                        } else {
-                            Responsable responsableSeleccion = (Responsable) binding.spinnerResponsable
-                                    .getSelectedItem();
-                            if (responsableSeleccion != null) {
-                                if (opcionEditarEliminar == 1) {
-                                    responsableViewModel.eliminarResponsable(responsableSeleccion.getIdResponsable());
-                                    sweetAlertOpciones.setMensaje("Responsable eliminado de la base de datos");
-                                    sweetAlertOpciones.mostrarDialogoSuccess();
-                                } else if (opcionEditarEliminar == 0) {
-                                    nombreCompleto = Utilitarios.separarString(nombreNuevo);
-                                    String nombreActualizar = nombreCompleto[0];
-                                    String apellidoActualizar = nombreCompleto[1];
-                                    responsableSeleccion.setNombre(nombreActualizar);
-                                    responsableSeleccion.setApellido(apellidoActualizar);
-                                    responsableSeleccion.setSincronizado(false);
-                                    responsableViewModel.actualizar(responsableSeleccion);
-                                    sweetAlertOpciones.setMensaje("Responsable actualizado correctamente " +
-                                            "en la base de datos");
-                                    sweetAlertOpciones.mostrarDialogoSuccess();
-                                }
-                            }
+                        } else if (opcionEditarEliminar == 0) {
+                            descargaSeleccionada.setNombre(nombreNuevo);
+                            descargaSeleccionada.setSincronizado(false);
+                            sweetAlertOpciones.setMensaje("Descarga actualizada correctamente " +
+                                    "en la base de datos");
+                            sweetAlertOpciones.mostrarDialogoSuccess();
                         }
-                    } catch (ArrayIndexOutOfBoundsException aiobe) {
-                        sweetAlertOpciones.setMensaje("Ingrese nombre y apellido");
+                    } else {
+                        sweetAlertOpciones.setMensaje("Seleccione una Descarga");
                         sweetAlertOpciones.mostrarDialogoError();
                     }
-                    break;
-                case DESCARGA:
-                    if (oldName == null) {
-                        descargaViewModel.insertar(new Descarga(nombreNuevo, "", false));
-                        sweetAlertOpciones.setMensaje("Descarga ingresada correctamente a la base de datos");
-                        sweetAlertOpciones.mostrarDialogoSuccess();
-                    } else {
-                        Descarga descargaSeleccionada = (Descarga) binding.spinnerDescarga
-                                .getSelectedItem();
-                        if (descargaSeleccionada != null) {
-                            if (opcionEditarEliminar == 1) {
-                                descargaViewModel.eliminar(descargaSeleccionada.getIdDescarga());
-                                sweetAlertOpciones.setMensaje("Descarga eliminada correctamente " +
-                                        "de la base de datos");
-                                sweetAlertOpciones.mostrarDialogoSuccess();
-                            } else if (opcionEditarEliminar == 0) {
-                                descargaSeleccionada.setNombre(nombreNuevo);
-                                descargaSeleccionada.setSincronizado(false);
-                                sweetAlertOpciones.setMensaje("Descarga actualizada correctamente " +
-                                        "en la base de datos");
-                                sweetAlertOpciones.mostrarDialogoSuccess();
-                            }
-                        } else {
-                            sweetAlertOpciones.setMensaje("Seleccione una Descarga");
-                            sweetAlertOpciones.mostrarDialogoError();
-                        }
-                        break;
-                    }
+                }
             }
         } catch (Exception ex) {
             sweetAlertOpciones.setMensaje("Error en la base de datos");
@@ -478,35 +416,16 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
         }
     }
 
-    private void crearResponsable() {
-        opcionEditarEliminar = 2;
-        oldName = null;
-        cargarDialogo(RESPONSABLE, null);
-    }
-
-    private void editarResponsable() {
-        opcionEditarEliminar = 0;
-        oldName = binding.spinnerResponsable.getSelectedItem().toString();
-        cargarDialogo(RESPONSABLE, oldName);
-    }
-
-    private void eliminarResponsable() {
-        opcionEditarEliminar = 1;
-        oldName = binding.spinnerResponsable.getSelectedItem().toString();
-        sweetAlertOpciones.mostrarDialogoEliminar(this, RESPONSABLE,
-                null);
-    }
-
     private void crearDescarga() {
         opcionEditarEliminar = 2;
         oldName = null;
-        cargarDialogo(DESCARGA, null);
+        cargarDialogo(null);
     }
 
     private void editarDescarga() {
         opcionEditarEliminar = 0;
         oldName = binding.spinnerDescarga.getSelectedItem().toString();
-        cargarDialogo(DESCARGA, oldName);
+        cargarDialogo(oldName);
     }
 
     private void eliminarDescarga() {
@@ -516,8 +435,8 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
                 null);
     }
 
-    private void cargarDialogo(String tituloDialogo, String nombre) {
-        dialogo.setTitleDialog(tituloDialogo);
+    private void cargarDialogo(String nombre) {
+        dialogo.setTitleDialog(DESCARGA);
         dialogo.setOldName(nombre);
         dialogo.show(getSupportFragmentManager(), "dialogo");
     }
@@ -573,7 +492,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
 
     private void crearPozo() {
         String tapado = binding.checkTapado.isChecked() ? "Si" : "No";
-        Responsable responsableSeleccionado = (Responsable) binding.spinnerResponsable.getSelectedItem();
         Descarga descargaSeleccionada = (Descarga) binding.spinnerDescarga.getSelectedItem();
         String sistema = binding.spinnerTipoSistema.getSelectedItem().toString();
         if (sistema.equals("Seleccione")) {
@@ -582,7 +500,7 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
             return;
         }
         try {
-            Integer idResponsable = responsableSeleccionado.getIdResponsable();
+            Integer idResponsable = responsable.getIdResponsable();
             Integer idDescarga = descargaSeleccionada.getIdDescarga();
             pozoViewModel.insertar(new Pozo(nombrePozo, false, ManejoFechas.obtenerFechaActual(),
                     ManejoFechas.obtenerFechaActual(), tapado, sistema, directorioPozo, ACTIVIDAD_POZO_CATASTRADO,
@@ -596,7 +514,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
             binding.inputLayoutPozo.setEnabled(false);
             binding.spinnerTipoSistema.setEnabled(false);
             binding.spinnerDescarga.setEnabled(false);
-            binding.spinnerResponsable.setEnabled(false);
             sweetAlertOpciones.setMensaje("Pozo creado correctamente");
             sweetAlertOpciones.mostrarDialogoSuccess();
         } catch (NullPointerException np) {
@@ -619,10 +536,8 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
         try {
             if (regresando || editando) {
                 String tipoSistema = binding.spinnerTipoSistema.getSelectedItem().toString();
-                Responsable responsableSeleccionado = (Responsable) binding.spinnerResponsable
-                        .getSelectedItem();
                 Descarga descargaSeleccionada = (Descarga) binding.spinnerDescarga.getSelectedItem();
-                Integer idResponsable = responsableSeleccionado.getIdResponsable();
+                Integer idResponsable = responsable.getIdResponsable();
                 Integer idDescarga = descargaSeleccionada.getIdDescarga();
                 pozo.setIdSector(sectorId);
                 pozo.setSistema(tipoSistema);

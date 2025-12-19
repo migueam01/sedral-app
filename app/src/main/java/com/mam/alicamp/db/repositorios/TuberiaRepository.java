@@ -132,8 +132,22 @@ public class TuberiaRepository {
     }
 
     public void eliminarTuberia(Integer idTuberia) {
-        AlicampDB.dbExecutor.execute(
-                () -> tuberiaDAO.deleteTuberia(idTuberia)
-        );
+        apiService.deleteTuberia(idTuberia).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if (response.isSuccessful()) {
+                    AlicampDB.dbExecutor.execute(
+                            () -> tuberiaDAO.deleteTuberia(idTuberia)
+                    );
+                } else {
+                    mensajeError.postValue("Error en la respuesta del servidor " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+                mensajeError.postValue("Error en la conexión " + t.getMessage());
+            }
+        });
     }
 }

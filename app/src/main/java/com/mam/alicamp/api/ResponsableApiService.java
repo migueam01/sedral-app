@@ -17,6 +17,9 @@ public interface ResponsableApiService {
     @GET("responsables")
     Call<List<Responsable>> getResponsables();
 
+    @GET("responsables/buscar/{username}")
+    Call<Responsable> buscarPorUsername(@Body Responsable responsable);
+
     @POST("responsables")
     Call<Responsable> createResponsable(@Body Responsable responsable);
 

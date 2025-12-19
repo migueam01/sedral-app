@@ -32,6 +32,10 @@ public class ResponsableViewModel extends AndroidViewModel {
         return listaResponsables;
     }
 
+    public LiveData<Responsable> obtenerResponsablePorUsername(String username) {
+        return repository.obtenerResponsablePorUsername(username);
+    }
+
     public void insertar(Responsable responsable) {
         repository.insertar(responsable);
     }

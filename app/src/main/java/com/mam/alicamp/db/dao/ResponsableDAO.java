@@ -23,6 +23,9 @@ public interface ResponsableDAO {
     @Query("SELECT * FROM responsables WHERE id_responsable =:idResponsable")
     Responsable findById(Integer idResponsable); //Para sincronización
 
+    @Query("SELECT * FROM responsables WHERE username =:username")
+    LiveData<Responsable> findByUsername(String username);
+
     @Query("SELECT * FROM responsables ORDER BY nombre")
     LiveData<List<Responsable>> findAllResponsables();
 
@@ -35,6 +38,6 @@ public interface ResponsableDAO {
     @Query("DELETE FROM responsables")
     void deleteAll();
 
-    @Query("UPDATE responsables SET eliminado = 1, sincronizado = 0 WHERE id_responsable =:idResponsable")
-    void deleteResponsable(Integer idResponsable);
+    /*@Query("UPDATE responsables SET eliminado = 1, sincronizado = 0 WHERE id_responsable =:idResponsable")
+    void deleteResponsable(Integer idResponsable);*/
 }

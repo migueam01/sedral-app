@@ -44,7 +44,6 @@ public class ResponsableRepository {
                         for (Responsable remoto : remotos) {
                             Responsable local = responsableDAO.findById(remoto.getIdResponsable());
                             if (local == null || !local.equals(remoto)) {
-                                remoto.setSincronizado(true);
                                 responsableDAO.insertOrUpdate(remoto);
                             }
                         }
@@ -60,6 +59,10 @@ public class ResponsableRepository {
             }
         });
         return responsableDAO.findAllResponsables();
+    }
+
+    public LiveData<Responsable> obtenerResponsablePorUsername(String username) {
+        return responsableDAO.findByUsername(username);
     }
 
     public void insertar(Responsable responsable) {

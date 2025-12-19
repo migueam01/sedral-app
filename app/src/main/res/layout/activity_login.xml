@@ -26,7 +26,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="55dp"
                 android:contentDescription="@string/content_login"
-                android:src="@drawable/logo_negocio" />
+                android:src="@drawable/logo_app" />
         </FrameLayout>
 
         <LinearLayout

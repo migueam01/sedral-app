@@ -16,22 +16,19 @@ public class Responsable {
     private Integer idResponsable;
     private String nombre;
     private String apellido;
+    private String username;
     private String telefono;
-    private String email;
-    private boolean sincronizado;
-    private boolean eliminado;
+    private String correo;
 
     public Responsable() {
     }
 
-    public Responsable(String nombre, String apellido, String telefono, String email,
-                       boolean sincronizado) {
+    public Responsable(String nombre, String apellido, String username, String telefono, String correo) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.username = username;
         this.telefono = telefono;
-        this.email = email;
-        this.sincronizado = sincronizado;
-        this.eliminado = false;
+        this.correo = correo;
     }
 
     public Integer getIdResponsable() {
@@ -66,28 +63,20 @@ public class Responsable {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public boolean isSincronizado() {
-        return sincronizado;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
-    }
-
-    public boolean isEliminado() {
-        return eliminado;
-    }
-
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     @Override
@@ -98,13 +87,14 @@ public class Responsable {
         return Objects.equals(idResponsable, r.idResponsable) &&
                 Objects.equals(nombre, r.nombre) &&
                 Objects.equals(apellido, r.apellido) &&
+                Objects.equals(username, r.username) &&
                 Objects.equals(telefono, r.telefono) &&
-                Objects.equals(email, r.email);
+                Objects.equals(correo, r.correo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idResponsable, nombre, apellido, telefono, email);
+        return Objects.hash(idResponsable, nombre, apellido, username, telefono, correo);
     }
 
     @NonNull

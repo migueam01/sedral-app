@@ -117,71 +117,30 @@
                 android:entries="@array/spinner_sistema" />
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/frameLayoutRealizado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_inicio"
-            app:layout_constraintStart_toStartOf="@+id/linearLayoutResponsable"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSistema">
-
-            <TextView
-                android:id="@+id/txtRealizado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/label_responsable"
-                android:textColor="#546E7A" />
-        </FrameLayout>
-
         <LinearLayout
             android:id="@+id/linearLayoutResponsable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_main_title"
+            android:layout_marginTop="@dimen/margin_top"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutSistema">
 
-            <Spinner
-                android:id="@+id/spinnerResponsable"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/layout_height_spinner"
-                android:layout_gravity="center" />
-
-            <ImageButton
-                android:id="@+id/imgBtnCrearResponsable"
+            <TextView
+                android:id="@+id/txtResponsable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/margin_left_icons"
-                android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/content_img_agregar_responsable"
-                android:src="@drawable/account_plus"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:text="@string/label_responsable"
+                android:textColor="#546E7A" />
 
-            <ImageButton
-                android:id="@+id/imgBtnEditarResponsable"
+            <TextView
+                android:id="@+id/txtNombreResponsable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/margin_left_icons"
-                android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/content_img_editar_responsable"
-                android:src="@drawable/account_edit"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <ImageButton
-                android:id="@+id/imgBtnEliminarResponsable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/margin_left_icons"
-                android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/content_img_eliminar_responsable"
-                android:src="@drawable/ic_delete"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginStart="@dimen/margin_left_linear"
+                android:text="@string/label_responsable"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
 
         <FrameLayout
