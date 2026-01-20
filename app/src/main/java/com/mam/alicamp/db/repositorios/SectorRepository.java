@@ -51,7 +51,6 @@ public class SectorRepository {
                         for (Sector remoto : remotos) {
                             Sector local = sectorDAO.findById(remoto.getIdSector());
                             if (local == null || !local.equals(remoto)) {
-                                remoto.setSincronizado(true);
                                 sectorDAO.insertOrUpdate(remoto);
                             }
                         }
@@ -98,7 +97,7 @@ public class SectorRepository {
         });
     }
 
-    public void eliminarSectorConPozos(Integer idSector) {
+    /*public void eliminarSectorConPozos(Integer idSector) {
         AlicampDB.dbExecutor.execute(() -> {
                     sectorDAO.deleteSector(idSector);
                     List<String> pozos = pozoDAO.findPozosActivosBySector(idSector);
@@ -108,7 +107,7 @@ public class SectorRepository {
                     }
                 }
         );
-    }
+    }*/
 
     public void actualizar(Sector sector) {
         apiService.updateSector(sector).enqueue(new Callback<Sector>() {

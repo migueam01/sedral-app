@@ -48,7 +48,6 @@ public class ProyectoRepository {
                         for (Proyecto remoto : remotos) {
                             Proyecto local = proyectoDAO.findById(remoto.getIdProyecto());
                             if (local == null || !local.equals(remoto)) {
-                                remoto.setSincronizado(true);
                                 proyectoDAO.insertOrUpdate(remoto);
                             }
                         }

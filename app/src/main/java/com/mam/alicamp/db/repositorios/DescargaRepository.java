@@ -45,7 +45,6 @@ public class DescargaRepository {
                         for (Descarga remoto : remotos) {
                             Descarga local = descargaDAO.findById(remoto.getIdDescarga());
                             if (local == null || !local.equals(remoto)) {
-                                remoto.setSincronizado(true);
                                 descargaDAO.insertOrUpdate(remoto);
                             }
                         }

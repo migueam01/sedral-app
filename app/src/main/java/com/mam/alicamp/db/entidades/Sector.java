@@ -26,19 +26,15 @@ public class Sector {
     @ColumnInfo(name = "id_sector")
     private Integer idSector;
     private String nombre;
-    private boolean sincronizado;
-    private boolean eliminado;
     @ColumnInfo(name = "fk_id_proyecto")
     private Integer idProyecto;
 
     public Sector() {
     }
 
-    public Sector(String nombre, Integer idProyecto, boolean sincronizado) {
+    public Sector(String nombre, Integer idProyecto) {
         this.nombre = nombre;
         this.idProyecto = idProyecto;
-        this.sincronizado = sincronizado;
-        this.eliminado = false;
     }
 
     public Integer getIdSector() {
@@ -55,22 +51,6 @@ public class Sector {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public boolean isSincronizado() {
-        return sincronizado;
-    }
-
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
-    }
-
-    public boolean isEliminado() {
-        return eliminado;
-    }
-
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
     }
 
     public Integer getIdProyecto() {

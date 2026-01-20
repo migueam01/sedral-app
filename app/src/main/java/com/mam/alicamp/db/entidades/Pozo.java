@@ -55,9 +55,7 @@ public class Pozo {
     private String calleNS;
     private String observacion;
     private String pathMedia;
-    private boolean sincronizado;
     private int actividadCompletada;
-    private boolean eliminado;
     @ColumnInfo(name = "fk_id_sector")
     private Integer idSector;
     @ColumnInfo(name = "fk_id_responsable")
@@ -65,18 +63,16 @@ public class Pozo {
     @ColumnInfo(name = "fk_id_descarga")
     private Integer idDescarga;
 
-    public Pozo(@NonNull String nombre, boolean sincronizado, String fechaCatastro, String fechaActualizacion,
+    public Pozo(@NonNull String nombre, String fechaCatastro, String fechaActualizacion,
                 String tapado, String sistema, String pathMedia, int actividadCompletada,
                 Integer idSector, Integer idResponsable, Integer idDescarga) {
         this.nombre = nombre;
         this.fechaCatastro = fechaCatastro;
         this.fechaActualizacion = fechaActualizacion;
-        this.sincronizado = sincronizado;
         this.tapado = tapado;
         this.sistema = sistema;
         this.pathMedia = pathMedia;
         this.actividadCompletada = actividadCompletada;
-        this.eliminado = false;
         this.idSector = idSector;
         this.idResponsable = idResponsable;
         this.idDescarga = idDescarga;
@@ -260,28 +256,12 @@ public class Pozo {
         this.pathMedia = pathMedia;
     }
 
-    public boolean isSincronizado() {
-        return sincronizado;
-    }
-
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
-    }
-
     public int getActividadCompletada() {
         return actividadCompletada;
     }
 
     public void setActividadCompletada(int actividadCompletada) {
         this.actividadCompletada = actividadCompletada;
-    }
-
-    public boolean isEliminado() {
-        return eliminado;
-    }
-
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
     }
 
     public Integer getIdSector() {

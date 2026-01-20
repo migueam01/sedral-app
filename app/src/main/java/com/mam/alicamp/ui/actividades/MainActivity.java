@@ -182,6 +182,24 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
 
     private void initListeners() {
         binding.spinnerGadm.setOnItemSelectedListener(this);
+        binding.spinnerProyecto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Proyecto proyectoSeleccionado = (Proyecto) parent.getItemAtPosition(position);
+                int idProyectoSeleccionado = proyectoSeleccionado.getIdProyecto();
+                proyectoViewModel.obtenerProyectoPorId(idProyectoSeleccionado).observe(MainActivity.this, pry -> {
+                    if (pry != null) {
+                        binding.editInputDotacion.setText(String.valueOf(pry.getDotacion()));
+                        binding.editInputPoblacion.setText(String.valueOf(pry.getPoblacion()));
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         binding.btnFinalizar.setOnClickListener(v -> confirmarSalida());
         binding.imgBtnAgregarGadm.setOnClickListener(v -> crearGadm());
         binding.imgBtnEditarGadm.setOnClickListener(v -> editarGadm());
@@ -393,8 +411,7 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
             switch (tipoObjeto) {
                 case GADM:
                     if (oldName == null) {
-                        gadmViewModel.insertarGadm(new Gadm(nombre, nombre,
-                                false));
+                        gadmViewModel.insertarGadm(new Gadm(nombre, nombre));
                         sweetAlertOpciones.setMensaje("Gadm ingresado correctamente a la base de datos");
                         sweetAlertOpciones.mostrarDialogoSuccess();
                     } else {
@@ -406,7 +423,6 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
                             } else if (opcionEditarEliminar == 0) {
                                 gadmSeleccionado.setNombre(nombre);
                                 gadmSeleccionado.setAlias(nombre);
-                                gadmSeleccionado.setSincronizado(false);
                                 gadmViewModel.actualizarGadm(gadmSeleccionado);
                                 sweetAlertOpciones.setMensaje("Gadm actualizado correctamente " +
                                         "en la base de datos");
@@ -421,8 +437,12 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
                 case PROYECTO:
                     if (oldName == null) {
                         if (gadmSeleccionado != null) {
+                            double dotacion = Double.parseDouble(Objects.requireNonNull(binding.editInputDotacion
+                                    .getText()).toString());
+                            int poblacion = Integer.parseInt(Objects.requireNonNull(binding.editInputPoblacion
+                                    .getText()).toString());
                             proyectoViewModel.insertarProyecto(new Proyecto(nombre, nombre,
-                                    gadmSeleccionado.getIdGadm(), false));
+                                    gadmSeleccionado.getIdGadm(), dotacion, poblacion));
                             sweetAlertOpciones.setMensaje("Proyecto ingresado correctamente a " +
                                     "la base de datos");
                             sweetAlertOpciones.mostrarDialogoSuccess();
@@ -440,7 +460,6 @@ public class MainActivity extends PermisosActivity implements AdapterView.OnItem
                             } else if (opcionEditarEliminar == 0) {
                                 proyectoSeleccionado.setNombre(nombre);
                                 proyectoSeleccionado.setAlias(nombre);
-                                proyectoSeleccionado.setSincronizado(false);
                                 proyectoViewModel.updateProyecto(proyectoSeleccionado);
                                 sweetAlertOpciones.setMensaje("Proyecto actualizado correctamente " +
                                         "en la base de datos");

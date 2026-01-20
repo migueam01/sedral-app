@@ -47,7 +47,6 @@ public class TuberiaRepository {
                         for (Tuberia remoto : remotos) {
                             Tuberia local = tuberiaDAO.findById(remoto.getIdTuberia());
                             if (local == null || !local.equals(remoto)) {
-                                remoto.setSincronizado(true);
                                 tuberiaDAO.insertOrUpdate(remoto);
                             }
                         }
@@ -89,7 +88,7 @@ public class TuberiaRepository {
             }
 
             @Override
-            public void onFailure(Call<Tuberia> call, Throwable t) {
+            public void onFailure(@NonNull Call<Tuberia> call, @NonNull Throwable t) {
                 mensajeError.postValue("Error en la conexión " + t.getMessage());
             }
         });
@@ -100,7 +99,7 @@ public class TuberiaRepository {
         tuberiaSpring.setIdTuberia(tuberia.getIdTuberia());
         apiService.updateTuberia(tuberiaSpring).enqueue(new Callback<Tuberia>() {
             @Override
-            public void onResponse(Call<Tuberia> call, Response<Tuberia> response) {
+            public void onResponse(@NonNull Call<Tuberia> call, @NonNull Response<Tuberia> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     AlicampDB.dbExecutor.execute(
                             () -> tuberiaDAO.update(tuberia)
@@ -111,7 +110,7 @@ public class TuberiaRepository {
             }
 
             @Override
-            public void onFailure(Call<Tuberia> call, Throwable t) {
+            public void onFailure(@NonNull Call<Tuberia> call, @NonNull Throwable t) {
                 mensajeError.postValue("Error en la conexión " + t.getMessage());
             }
         });
@@ -131,7 +130,7 @@ public class TuberiaRepository {
         return tuberiaSpring;
     }
 
-    public void eliminarTuberia(Integer idTuberia) {
+    /*public void eliminarTuberia(Integer idTuberia) {
         apiService.deleteTuberia(idTuberia).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
@@ -149,5 +148,5 @@ public class TuberiaRepository {
                 mensajeError.postValue("Error en la conexión " + t.getMessage());
             }
         });
-    }
+    }*/
 }

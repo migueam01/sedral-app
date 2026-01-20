@@ -223,7 +223,6 @@ public class FinCatastro extends PermisosActivity {
     private void finalizarCatastro() {
         Intent intent = new Intent(this, MainActivity.class);
         pozo.setObservacion(binding.editTextObservacion.getText().toString());
-        pozo.setSincronizado(false);
         pozo.setActividadCompletada(ACTIVIDAD_FIN_CATASTRO);
         pozoViewModel.actualizarFin(pozo);
         startActivity(intent);
@@ -234,7 +233,6 @@ public class FinCatastro extends PermisosActivity {
         Intent intent = new Intent(this, PozoCatastrado.class);
         String directorioPozos = pozo.getPathMedia();
         pozo.setObservacion(binding.editTextObservacion.getText().toString());
-        pozo.setSincronizado(false);
         pozo.setActividadCompletada(ACTIVIDAD_FIN_CATASTRO);
         pozoViewModel.actualizarFin(pozo);
         intent.putExtra(GADM_ID, gadmId);

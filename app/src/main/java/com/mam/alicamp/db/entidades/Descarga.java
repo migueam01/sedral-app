@@ -17,18 +17,14 @@ public class Descarga {
     private Integer idDescarga;
     private String nombre;
     private String ubicacion;
-    private boolean sincronizado;
-    private boolean eliminado;
 
     @Ignore
     public Descarga() {
     }
 
-    public Descarga(String nombre, String ubicacion, boolean sincronizado) {
+    public Descarga(String nombre, String ubicacion) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
-        this.sincronizado = sincronizado;
-        this.eliminado = false;
     }
 
     public Integer getIdDescarga() {
@@ -53,22 +49,6 @@ public class Descarga {
 
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
-    }
-
-    public boolean isSincronizado() {
-        return sincronizado;
-    }
-
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
-    }
-
-    public boolean isEliminado() {
-        return eliminado;
-    }
-
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
     }
 
     @Override

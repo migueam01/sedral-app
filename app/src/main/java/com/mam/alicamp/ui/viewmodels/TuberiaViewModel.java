@@ -50,7 +50,7 @@ public class TuberiaViewModel extends AndroidViewModel {
         repository.actualizar(tuberia, pozoInicio, pozoFin);
     }
 
-    public void eliminarTuberia(Integer idTuberia) {
+    /*public void eliminarTuberia(Integer idTuberia) {
         repository.eliminarTuberia(idTuberia);
-    }
+    }*/
 }

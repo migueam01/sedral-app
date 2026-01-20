@@ -47,6 +47,6 @@ public interface SectorDAO {
     @Query("DELETE FROM sectores")
     void deleteAll();
 
-    @Query("UPDATE sectores SET eliminado = 1, sincronizado = 0 WHERE id_sector =:idSector")
-    void deleteSector(Integer idSector);
+    /*@Query("UPDATE sectores SET eliminado = 1, sincronizado = 0 WHERE id_sector =:idSector")
+    void deleteSector(Integer idSector);*/
 }

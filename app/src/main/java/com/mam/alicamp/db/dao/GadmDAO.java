@@ -35,8 +35,8 @@ public interface GadmDAO {
     @Query("DELETE FROM gadms WHERE id_gadm =:idGadm")
     void deleteById(Integer idGadm);
 
-    @Query("UPDATE gadms SET eliminado = 1, sincronizado = 0 WHERE id_gadm =:idGadm")
-    void deleteGadm(Integer idGadm);
+    /*@Query("UPDATE gadms SET eliminado = 1, sincronizado = 0 WHERE id_gadm =:idGadm")
+    void deleteGadm(Integer idGadm);*/
 
     @Query("DELETE FROM gadms")
     void deleteAll();

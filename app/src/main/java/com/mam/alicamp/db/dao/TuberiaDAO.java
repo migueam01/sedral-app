@@ -43,7 +43,7 @@ public interface TuberiaDAO {
     @Query("DELETE FROM tuberias")
     void deleteAll();
 
-    @Query("UPDATE tuberias SET eliminado = 1, sincronizado = 0 WHERE id_tuberia =:idTuberia")
+    /*@Query("UPDATE tuberias SET eliminado = 1, sincronizado = 0 WHERE id_tuberia =:idTuberia")
     void deleteTuberia(Integer idTuberia);
 
     @Query("UPDATE tuberias SET eliminado = 1, sincronizado = 0 WHERE fk_pozo_inicio =:nombrePozo " +
@@ -52,5 +52,5 @@ public interface TuberiaDAO {
 
     @Query("UPDATE tuberias SET eliminado = 1, sincronizado = 0 WHERE fk_pozo_inicio IN (:nombrePozo)" +
             " OR fk_pozo_fin IN (:nombrePozo)")
-    void deleteTuberiasByPozoBySector(List<String> nombrePozo);
+    void deleteTuberiasByPozoBySector(List<String> nombrePozo);*/
 }

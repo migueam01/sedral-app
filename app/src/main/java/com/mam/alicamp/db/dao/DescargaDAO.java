@@ -39,6 +39,6 @@ public interface DescargaDAO {
     @Delete(entity = Descarga.class)
     void deleteDescarga(Descarga descarga);
 
-    @Query("UPDATE descargas SET eliminado = 1, sincronizado = 0 WHERE id_descarga =:idDescarga")
-    void delete(Integer idDescarga);
+    /*@Query("UPDATE descargas SET eliminado = 1, sincronizado = 0 WHERE id_descarga =:idDescarga")
+    void delete(Integer idDescarga);*/
 }

@@ -91,7 +91,7 @@ public class PozoViewModel extends AndroidViewModel {
         repository.actualizarFin(pozo);
     }
 
-    public void eliminarPozoConTuberias(String nombrePozo) {
+    /*public void eliminarPozoConTuberias(String nombrePozo) {
         repository.eliminarPozoConTuberias(nombrePozo);
-    }
+    }*/
 }

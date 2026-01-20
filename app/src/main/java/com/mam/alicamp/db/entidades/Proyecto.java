@@ -28,8 +28,8 @@ public class Proyecto {
     private Integer idProyecto;
     private String nombre;
     private String alias;
-    private boolean sincronizado;
-    private boolean eliminado;
+    private double dotacion;
+    private int poblacion;
     @ColumnInfo(name = "fk_id_gadm")
     private Integer idGadm;
 
@@ -37,11 +37,11 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(String nombre, String alias, Integer idGadm, boolean sincronizado) {
+    public Proyecto(String nombre, String alias, Integer idGadm, double dotacion, int poblacion) {
         this.nombre = nombre;
         this.alias = alias;
-        this.sincronizado = sincronizado;
-        this.eliminado = false;
+        this.dotacion = dotacion;
+        this.poblacion = poblacion;
         this.idGadm = idGadm;
     }
 
@@ -69,20 +69,20 @@ public class Proyecto {
         this.alias = alias;
     }
 
-    public boolean isSincronizado() {
-        return sincronizado;
+    public double getDotacion() {
+        return dotacion;
     }
 
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
+    public void setDotacion(double dotacion) {
+        this.dotacion = dotacion;
     }
 
-    public boolean isEliminado() {
-        return eliminado;
+    public int getPoblacion() {
+        return poblacion;
     }
 
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
+    public void setPoblacion(int poblacion) {
+        this.poblacion = poblacion;
     }
 
     public Integer getIdGadm() {
@@ -101,12 +101,14 @@ public class Proyecto {
         return Objects.equals(idProyecto, p.idProyecto) &&
                 Objects.equals(nombre, p.nombre) &&
                 Objects.equals(alias, p.alias) &&
+                Objects.equals(dotacion, p.dotacion) &&
+                Objects.equals(poblacion, p.poblacion) &&
                 Objects.equals(idGadm, p.idGadm);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProyecto, nombre, alias, idGadm);
+        return Objects.hash(idProyecto, nombre, alias, dotacion, poblacion, idGadm);
     }
 
     @NonNull

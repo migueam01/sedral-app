@@ -161,6 +161,9 @@ public class TuberiaCatastrada extends AppCompatActivity {
             seleccionarItemSpinnerMaterial(tuberiaConPozos.tuberia.getMaterial());
             seleccionarItemSpinnerFlujo(tuberiaConPozos.tuberia.getFlujo());
             seleccionarRadioButtonFunciona(tuberiaConPozos.tuberia.getFunciona());
+            binding.editInputLongitud.setText(String.valueOf(tuberiaConPozos.tuberia.getLongitud()));
+            binding.editInputAreaAporte.setText(String.valueOf(tuberiaConPozos.tuberia.getAreaAporte()));
+            binding.editInputCalado.setText(String.valueOf(tuberiaConPozos.tuberia.getCalado()));
             binding.btnAgregarTuberia.setText(R.string.button_guardar);
         }
     }
@@ -245,6 +248,10 @@ public class TuberiaCatastrada extends AppCompatActivity {
                     .getText()).toString());
             double alturaCorona = Double.parseDouble(Objects.requireNonNull(binding.editInputCorona
                     .getText()).toString());
+            double areaAporte = Double.parseDouble(Objects.requireNonNull(binding.editInputAreaAporte
+                    .getText()).toString());
+            double calado = Double.parseDouble(Objects.requireNonNull(binding.editInputCalado
+                    .getText()).toString());
             int diametro = Integer.parseInt(binding.txtDiametroDato.getText().toString());
             String flujo = binding.spinnerFlujo.getSelectedItem().toString();
             String material = binding.spinnerMaterial.getSelectedItem().toString();
@@ -290,13 +297,14 @@ public class TuberiaCatastrada extends AppCompatActivity {
                 tuberia.setMaterial(material);
                 tuberia.setOrientacion(orientacion);
                 tuberia.setFunciona(funciona);
+                tuberia.setAreaAporte(areaAporte);
+                tuberia.setCalado(calado);
                 tuberia.setIdPozoInicio(pozoInicio.getIdPozo());
                 tuberia.setIdPozoFin(pozoFin.getIdPozo());
-                tuberia.setSincronizado(false);
                 tuberiaViewModel.actualizar(tuberia, pozoInicio, pozoFin);
             } else {
                 tuberia = new Tuberia(orientacion, alturaBase, alturaCorona, diametro, material,
-                        flujo, funciona, pozoInicio.getIdPozo(), pozoFin.getIdPozo(), false);
+                        flujo, funciona, areaAporte, calado, pozoInicio.getIdPozo(), pozoFin.getIdPozo());
                 tuberiaViewModel.insertar(tuberia, pozoInicio, pozoFin);
             }
             if (pozoInicio.getActividadCompletada() < ACTIVIDAD_TUBERIA_CATASTRADA) {
@@ -339,7 +347,7 @@ public class TuberiaCatastrada extends AppCompatActivity {
                     .showCancelButton(true)
                     .setCancelClickListener(SweetAlertDialog::dismissWithAnimation)
                     .setConfirmClickListener(sweetAlertDialog -> {
-                        pozoFin = new Pozo(nombrePozoFin, false, ManejoFechas.obtenerFechaActual(),
+                        pozoFin = new Pozo(nombrePozoFin, ManejoFechas.obtenerFechaActual(),
                                 ManejoFechas.obtenerFechaActual(),
                                 "No", pozoInicio.getSistema(),
                                 pozoInicio.getPathMedia(), ACTIVIDAD_POZO_CATASTRADO,

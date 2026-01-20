@@ -55,7 +55,6 @@ public class PozoRepository {
                             Pozo local = pozoDAO.findById(remoto.getIdPozo());
                             if (local == null || convertirFechaADateTime(remoto.getFechaActualizacion())
                                     .isAfter(convertirFechaADateTime(local.getFechaActualizacion()))) {
-                                remoto.setSincronizado(true);
                                 pozoDAO.insertOrUpdate(remoto);
                             }
                         }
@@ -137,7 +136,6 @@ public class PozoRepository {
         pozoCreacion.setNombre(pozo.getNombre());
         pozoCreacion.setFechaCatastro(pozo.getFechaCatastro());
         pozoCreacion.setFechaActualizacion(pozo.getFechaActualizacion());
-        pozoCreacion.setSincronizado(pozo.isSincronizado());
         pozoCreacion.setTapado(pozo.getTapado());
         pozoCreacion.setSistema(pozo.getSistema());
         pozoCreacion.setPathMedia(pozo.getPathMedia());
@@ -244,11 +242,11 @@ public class PozoRepository {
         return pozoFin;
     }
 
-    public void eliminarPozoConTuberias(String nombrePozo) {
+    /*public void eliminarPozoConTuberias(String nombrePozo) {
         AlicampDB.dbExecutor.execute(() -> {
                     pozoDAO.deletePozo(nombrePozo);
                     tuberiaDAO.deleteTuberiasByPozo(nombrePozo);
                 }
         );
-    }
+    }*/
 }

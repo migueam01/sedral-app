@@ -384,7 +384,7 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
         try {
             if (tipoObjeto.equals(DESCARGA)) {
                 if (oldName == null) {
-                    descargaViewModel.insertar(new Descarga(nombreNuevo, "", false));
+                    descargaViewModel.insertar(new Descarga(nombreNuevo, ""));
                     sweetAlertOpciones.setMensaje("Descarga ingresada correctamente a la base de datos");
                     sweetAlertOpciones.mostrarDialogoSuccess();
                 } else {
@@ -398,7 +398,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
                             sweetAlertOpciones.mostrarDialogoSuccess();
                         } else if (opcionEditarEliminar == 0) {
                             descargaSeleccionada.setNombre(nombreNuevo);
-                            descargaSeleccionada.setSincronizado(false);
                             sweetAlertOpciones.setMensaje("Descarga actualizada correctamente " +
                                     "en la base de datos");
                             sweetAlertOpciones.mostrarDialogoSuccess();
@@ -502,7 +501,7 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
         try {
             Integer idResponsable = responsable.getIdResponsable();
             Integer idDescarga = descargaSeleccionada.getIdDescarga();
-            pozoViewModel.insertar(new Pozo(nombrePozo, false, ManejoFechas.obtenerFechaActual(),
+            pozoViewModel.insertar(new Pozo(nombrePozo, ManejoFechas.obtenerFechaActual(),
                     ManejoFechas.obtenerFechaActual(), tapado, sistema, directorioPozo, ACTIVIDAD_POZO_CATASTRADO,
                     sectorId, idResponsable, idDescarga));
             binding.imgBtnCrearPozo.setEnabled(false);
@@ -543,7 +542,6 @@ public class PozoCatastrado extends PermisosActivity implements ManejoDialogos.I
                 pozo.setSistema(tipoSistema);
                 pozo.setIdResponsable(idResponsable);
                 pozo.setIdDescarga(idDescarga);
-                pozo.setSincronizado(false);
                 pozoViewModel.actualizar(pozo);
             }
             intentActivity();

@@ -175,7 +175,7 @@ public class ListaTuberias extends AppCompatActivity {
     }
 
     private void eliminarTuberia(Integer idTuberia) {
-        tuberiaViewModel.eliminarTuberia(idTuberia);
+        //tuberiaViewModel.eliminarTuberia(idTuberia);
     }
 
     private void crearTuberia() {

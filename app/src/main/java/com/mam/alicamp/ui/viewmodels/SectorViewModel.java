@@ -49,7 +49,7 @@ public class SectorViewModel extends AndroidViewModel {
         repository.actualizar(sector);
     }
 
-    public void eliminarSectorConPozos(Integer idSector) {
+    /*public void eliminarSectorConPozos(Integer idSector) {
         repository.eliminarSectorConPozos(idSector);
-    }
+    }*/
 }

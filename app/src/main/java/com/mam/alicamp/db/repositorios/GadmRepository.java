@@ -44,7 +44,6 @@ public class GadmRepository {
                         for (Gadm remoto : remotos) {
                             Gadm local = gadmDAO.findById(remoto.getIdGadm());
                             if (local == null || !local.equals(remoto)) {
-                                remoto.setSincronizado(true);
                                 gadmDAO.insertOrUpdate(remoto);
                             }
                         }

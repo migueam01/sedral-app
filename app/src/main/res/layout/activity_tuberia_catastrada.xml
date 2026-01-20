@@ -226,6 +226,67 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayoutHidraulico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_final"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalcDiam">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="noExcludeDescendants">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editInputLongitud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_text_input"
+                    android:ems="7"
+                    android:enabled="false"
+                    android:hint="@string/hint_longitud"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutAreaAporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="noExcludeDescendants">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editInputAreaAporte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_text_input"
+                    android:ems="7"
+                    android:hint="@string/hint_area_aporte"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutCalado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="noExcludeDescendants">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editInputCalado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_text_input"
+                    android:ems="7"
+                    android:hint="@string/hint_calado"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/linearLayoutMaterialTub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -233,7 +294,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalcDiam">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutHidraulico">
 
             <TextView
                 android:id="@+id/textView29"

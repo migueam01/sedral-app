@@ -41,6 +41,6 @@ public interface ProyectoDAO {
     @Query("DELETE FROM proyectos")
     void deleteAll();
 
-    @Query("UPDATE proyectos SET eliminado = 1, sincronizado = 0 WHERE id_proyecto =:idProyecto")
-    void deleteProyecto(Integer idProyecto);
+    /*@Query("UPDATE proyectos SET eliminado = 1, sincronizado = 0 WHERE id_proyecto =:idProyecto")
+    void deleteProyecto(Integer idProyecto);*/
 }

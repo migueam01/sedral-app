@@ -37,10 +37,11 @@ public class Tuberia {
     private double corona;
     private int diametro;
     private String material;
+    private double longitud;
     private String flujo;
     private String funciona;
-    private boolean sincronizado;
-    private boolean eliminado;
+    private double areaAporte;
+    private double calado;
     @ColumnInfo(name = "fk_pozo_inicio")
     private Integer idPozoInicio;
     @ColumnInfo(name = "fk_pozo_fin")
@@ -51,18 +52,18 @@ public class Tuberia {
     }
 
     public Tuberia(String orientacion, double base, double corona, int diametro, String material,
-                   String flujo, String funciona, Integer idPozoInicio, Integer idPozoFin, boolean sincronizado) {
+                   String flujo, String funciona, double areaAporte, double calado, Integer idPozoInicio, Integer idPozoFin) {
         this.orientacion = orientacion;
         this.base = base;
         this.corona = corona;
         this.diametro = diametro;
         this.material = material;
         this.flujo = flujo;
+        this.areaAporte = areaAporte;
+        this.calado = calado;
         this.funciona = funciona;
         this.idPozoInicio = idPozoInicio;
         this.idPozoFin = idPozoFin;
-        this.sincronizado = sincronizado;
-        this.eliminado = false;
     }
 
     public Integer getIdTuberia() {
@@ -113,6 +114,14 @@ public class Tuberia {
         this.material = material;
     }
 
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
     public String getFlujo() {
         return flujo;
     }
@@ -129,20 +138,20 @@ public class Tuberia {
         this.funciona = funciona;
     }
 
-    public boolean isSincronizado() {
-        return sincronizado;
+    public double getAreaAporte() {
+        return areaAporte;
     }
 
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
+    public void setAreaAporte(double areaAporte) {
+        this.areaAporte = areaAporte;
     }
 
-    public boolean isEliminado() {
-        return eliminado;
+    public double getCalado() {
+        return calado;
     }
 
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
+    public void setCalado(double calado) {
+        this.calado = calado;
     }
 
     public Integer getIdPozoInicio() {
@@ -172,15 +181,18 @@ public class Tuberia {
                 Objects.equals(corona, t.corona) &&
                 Objects.equals(diametro, t.diametro) &&
                 Objects.equals(material, t.material) &&
+                Objects.equals(longitud, t.longitud) &&
                 Objects.equals(flujo, t.flujo) &&
                 Objects.equals(funciona, t.funciona) &&
+                Objects.equals(areaAporte, t.areaAporte) &&
+                Objects.equals(calado, t.calado) &&
                 Objects.equals(idPozoInicio, t.idPozoInicio) &&
                 Objects.equals(idPozoFin, t.idPozoFin);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idTuberia, orientacion, base, corona, diametro, material, flujo,
-                funciona, idPozoInicio, idPozoFin);
+        return Objects.hash(idTuberia, orientacion, base, corona, diametro, material, longitud, flujo,
+                funciona, areaAporte, calado, idPozoInicio, idPozoFin);
     }
 }

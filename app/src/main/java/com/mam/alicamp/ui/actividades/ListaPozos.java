@@ -399,18 +399,17 @@ public class ListaPozos extends AppCompatActivity implements AdapterView.OnItemS
         Sector sectorSeleccionado = (Sector) binding.spinnerSector.getSelectedItem();
         try {
             if (oldName == null) {
-                sectorViewModel.insertar(new Sector(nombre, proyectoId, false));
+                sectorViewModel.insertar(new Sector(nombre, proyectoId));
                 sweetAlertOpciones.setMensaje("Sector ingresado correctamente a la base de datos");
                 sweetAlertOpciones.mostrarDialogoSuccess();
             } else {
                 if (sectorSeleccionado != null) {
                     if (opcionEditarEliminar == 1) {
-                        sectorViewModel.eliminarSectorConPozos(sectorSeleccionado.getIdSector());
+                        //sectorViewModel.eliminarSectorConPozos(sectorSeleccionado.getIdSector());
                         sweetAlertOpciones.setMensaje("Sector eliminado de la base de datos");
                         sweetAlertOpciones.mostrarDialogoSuccess();
                     } else if (opcionEditarEliminar == 0) {
                         sectorSeleccionado.setNombre(nombre);
-                        sectorSeleccionado.setSincronizado(false);
                         sectorViewModel.actualizar(sectorSeleccionado);
                         sweetAlertOpciones.setMensaje("Sector actualizado correctamente en la base de datos");
                         sweetAlertOpciones.mostrarDialogoSuccess();
@@ -435,7 +434,7 @@ public class ListaPozos extends AppCompatActivity implements AdapterView.OnItemS
             sweetAlertOpciones.setMensaje("No existen fotos del pozo");
             sweetAlertOpciones.mostrarDialogoError();
         }
-        pozoViewModel.eliminarPozoConTuberias(pozo.getNombre());
+        //pozoViewModel.eliminarPozoConTuberias(pozo.getNombre());
     }
 
     private void crearPozo() {

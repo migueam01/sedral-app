@@ -21,6 +21,8 @@
     <string name="content_img_eliminar_proyecto">Eliminar proyecto</string>
     <string name="content_img_agregar_proyecto">Añadir proyecto</string>
     <string name="label_proyecto">Proyecto</string>
+    <string name="hint_dotacion">Dotación (l/hab/dia)</string>
+    <string name="hint_poblacion">Población (Hab)</string>
     <string name="button_catastrar">CATASTRAR RED</string>
     <string name="button_salir">SALIR</string>
 
@@ -118,10 +120,12 @@
         <item>Este</item>
         <item>Oeste</item>
         <item>SD</item>
-
     </string-array>
-    <string name="hint_altura_base">H base</string>
-    <string name="hint_altura_corona">H corona</string>
+    <string name="hint_altura_base">H base (m)</string>
+    <string name="hint_longitud">Longitud (m)</string>
+    <string name="hint_area_aporte">Área de aporte (Ha)</string>
+    <string name="hint_calado">Calado (m)</string>
+    <string name="hint_altura_corona">H corona (m)</string>
     <string name="button_diametro">CALCULAR DIÁMETRO</string>
     <string name="label_calc_diametro">0</string>
     <string name="label_unidad">mm</string>

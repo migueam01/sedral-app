@@ -160,7 +160,6 @@ public class Dimensiones extends AppCompatActivity {
             pozo.setAncho(ancho);
             pozo.setFluido(fluido);
             pozo.setEstado(estado);
-            pozo.setSincronizado(false);
             if (pozo.getActividadCompletada() < ACTIVIDAD_DIMENSIONES) {
                 pozo.setActividadCompletada(ACTIVIDAD_DIMENSIONES);
             }

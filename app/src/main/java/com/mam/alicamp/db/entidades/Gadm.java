@@ -18,18 +18,14 @@ public class Gadm {
     private Integer idGadm;
     private String nombre;
     private String alias;
-    private boolean sincronizado;
-    private boolean eliminado;
 
     @Ignore
     public Gadm() {
     }
 
-    public Gadm(String nombre, String alias, boolean sincronizado) {
+    public Gadm(String nombre, String alias) {
         this.nombre = nombre;
         this.alias = alias;
-        this.sincronizado = sincronizado;
-        this.eliminado = false;
     }
 
     public Integer getIdGadm() {
@@ -54,22 +50,6 @@ public class Gadm {
 
     public void setAlias(String alias) {
         this.alias = alias;
-    }
-
-    public boolean isSincronizado() {
-        return sincronizado;
-    }
-
-    public void setSincronizado(boolean sincronizado) {
-        this.sincronizado = sincronizado;
-    }
-
-    public boolean isEliminado() {
-        return eliminado;
-    }
-
-    public void setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
     }
 
     @Override

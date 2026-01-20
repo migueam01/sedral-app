@@ -54,12 +54,9 @@ public interface PozoDAO {
     @Query("DELETE FROM pozos WHERE id_pozo =:idPozo")
     void deleteById(Integer idPozo);
 
-    @Query("UPDATE pozos SET eliminado = 1, sincronizado = 0 WHERE nombre =:nombrePozo")
-    void deletePozo(String nombrePozo);
-
     @Query("SELECT nombre FROM pozos WHERE fk_id_sector =:idSector")
     List<String> findPozosActivosBySector(Integer idSector);
 
-    @Query("UPDATE pozos SET eliminado = 1, sincronizado = 0 WHERE fk_id_sector =:idSector")
-    void deletePozosBySector(Integer idSector);
+    /*@Query("UPDATE pozos SET eliminado = 1, sincronizado = 0 WHERE fk_id_sector =:idSector")
+    void deletePozosBySector(Integer idSector);*/
 }
